@@ -4,8 +4,8 @@ const Footer: React.FC = () => {
             <div className="container mx-auto text-center">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex flex-row items-center justify-center">
-                        <img src="/mtm_logo_full.png" alt="Matte Tool & Machine Logo" className="h-20 mr-2 ml-4" />
                         <div className="flex flex-col">
+                            <img src="/mtm_logo_full.png" alt="Matte Tool & Machine Logo" className="h-20 mr-2 ml-4 mb-4" />
                             <p className="font-bold">Matte Tool & Machine LTD. {new Date().getFullYear()}</p>
                             <p>All rights reserved.</p>
                         </div>
