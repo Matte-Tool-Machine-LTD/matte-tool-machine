@@ -20,11 +20,11 @@ const HomeCard: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const form = e.currentTarget;
-    const name = form.name.value.trim();
-    const email = form.email.value.trim();
-    const phone = form.phone.value.trim();
-    const details = form.details.value.trim();
-    const file = form.file.files[0];
+    const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim();
+    const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim();
+    const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value.trim();
+    const details = (form.elements.namedItem("details") as HTMLTextAreaElement)?.value.trim();
+    const file = (form.elements.namedItem("file") as HTMLInputElement)?.files?.[0];
     const token = recaptchaRef.current?.getValue();
 
     if (!name || !email || !phone) {
