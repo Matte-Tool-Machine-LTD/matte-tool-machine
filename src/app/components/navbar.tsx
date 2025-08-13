@@ -2,7 +2,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Sheet, SheetTitle, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
 const Navbar: React.FC = () => {
@@ -14,10 +14,10 @@ const Navbar: React.FC = () => {
     ];
     return (
         <nav className="sticky top-0 z-50 flex items-center justify-between px-4 md:px-20 py-4 bg-white/90 border-b border-gray-200 shadow-xl">
-            <div className="flex items-center min-w-[120px] h-10">
+            <Link href="/" className="flex items-center min-w-[120px] h-10 cursor-pointer">
                 <img src="/mtm_logo.png" alt="Company Logo" className="h-[150%]" />
                 <h2 className="ml-2 text-2xl font-semibold whitespace-nowrap">Matte Tool & Machine LTD.</h2>
-            </div>
+            </Link>
             {/* Desktop Nav */}
             <ul className="hidden md:flex gap-8 list-none m-0 p-0">
                 {navLinks.map((link) => (
@@ -39,6 +39,7 @@ const Navbar: React.FC = () => {
                             <Menu className="w-7 h-7" />
                         </Button>
                     </SheetTrigger>
+                    <SheetTitle className="sr-only">Menu</SheetTitle>
                     <SheetContent side="right" className="w-64 p-0">
                         <div className="flex flex-col h-full">
                             <div className="flex items-center px-4 py-4 border-b">

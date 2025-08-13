@@ -1,11 +1,12 @@
 import HomeCard from "./components/homepage/homeCard";
 import AboutUs from "./components/homepage/aboutUs";
 import OurProcess from "./components/homepage/outProcess";
+import Gallery from "./components/homepage/gallery";
 
 export default function Home() {
   return (
     <>
-      <main className="flex flex-col md:flex-row min-h-[90vh] items-center justify-center p-4 md:p-8 relative">
+      <main className="flex flex-col md:flex-row min-h-[90vh] items-center justify-center px-4 pb-4 pt-2 md:p-4 relative">
         {/* Background image */}
         <div
           className="fixed inset-0 -z-10 bg-cover bg-center bg-no-repeat opacity-25 md:bg-[position:60%_center]"
@@ -28,6 +29,7 @@ export default function Home() {
       </main>
       <AboutUs />
       <OurProcess />
+      <Gallery />
     </>
   );
 }

@@ -67,35 +67,24 @@ const aboutItems = [
 
 const AboutUs: React.FC = () => (
     <section className="py-8 px-4 bg-gray-50">
-        <h2 className="text-center my-12 text-4xl font-bold">High Precision Machine Shop Focused on your needs</h2>
-        <p className="max-w-2xl mx-auto mb-12 text-center text-gray-700 text-lg">
+        <h2 className="text-center my-12 text-3xl md:text-4xl font-bold">
+            High Precision Machine Shop Focused on your needs
+        </h2>
+        <p className="max-w-2xl mx-auto mb-12 text-center text-gray-700 text-base md:text-lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam enim, eget facilisis sapien sapien nec velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
         </p>
         <div className="flex justify-center gap-8 flex-wrap">
             <div className="flex flex-col items-center w-full">
-                {/* First row: first 3 items, evenly sized */}
-                <div className="flex justify-center gap-8 w-full mb-8 px-24">
-                    {aboutItems.slice(0, 3).map((item, idx) => (
+                {/* Responsive grid for all items */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full px-2 md:px-12 lg:px-24">
+                    {aboutItems.map((item, idx) => (
                         <div
                             key={idx}
-                            className="bg-white rounded-lg shadow-md p-6 min-w-[220px] h-[260px] flex-1 text-center"
+                            className="bg-white rounded-lg shadow-md p-6 min-w-[220px] h-[260px] flex flex-col items-center text-center transition hover:shadow-lg"
                         >
                             <div className="mb-4">{item.icon}</div>
-                            <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                            <p className="text-gray-600">{item.description}</p>
-                        </div>
-                    ))}
-                </div>
-                {/* Second row: last 3 items, lined up underneath */}
-                <div className="flex justify-center gap-8 w-full mb-8 px-24">
-                    {aboutItems.slice(3, 6).map((item, idx) => (
-                        <div
-                            key={idx + 3}
-                            className="bg-white rounded-lg shadow-md p-6 min-w-[220px] h-[260px] flex-1 text-center"
-                        >
-                            <div className="mb-4">{item.icon}</div>
-                            <h3 className="mb-2 text-xl font-semibold">{item.title}</h3>
-                            <p className="text-gray-600">{item.description}</p>
+                            <h3 className="mb-2 text-lg md:text-xl font-semibold">{item.title}</h3>
+                            <p className="text-gray-600 text-sm md:text-base">{item.description}</p>
                         </div>
                     ))}
                 </div>

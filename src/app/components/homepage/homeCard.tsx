@@ -2,7 +2,7 @@
 import React, { useRef, useState } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
 
-const SITE_KEY = "";
+const SITE_KEY = "6LdcCaUrAAAAAMoVryNXEaZxzMeZ9e-UECLDWrfq";
 
 async function sendQuote(data: FormData) {
   const response = await fetch("/api/contact", {
@@ -65,7 +65,7 @@ const HomeCard: React.FC = () => {
   return (
     <aside style={{ flex: 1, maxWidth: 400, backgroundColor: '#f8f8f8e9' }} className="shadow-xl">
       <div className="rounded-xl shadow-lg p-4 flex flex-col gap-4">
-        <h2 className="mb-2 text-xl font-semibold">Request a Quote</h2>
+        <h2 className="text-xl font-semibold">Request a Quote</h2>
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
           <input type="text" name="name" placeholder="Name" className="w-full px-3 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
           <input type="email" name="email" placeholder="Email" className="w-full px-3 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
@@ -100,7 +100,6 @@ const HomeCard: React.FC = () => {
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={SITE_KEY}
-            className="mb-4"
           />
 
           <button
