@@ -1,17 +1,22 @@
 "use client";
-import React from 'react';
-import Link from 'next/link';
+import React, { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetTitle, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
+import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
+import HomeCard from "./homepage/homeCard";
 
 const Navbar: React.FC = () => {
+    const [openModal, setOpenModal] = useState(false);
+
     const navLinks = [
         { href: "/services", label: "Services" },
         { href: "/gallery", label: "Gallery" },
         { href: "/about", label: "About Us" },
         { href: "/contact", label: "Contact Us" },
     ];
+
     return (
         <nav className="sticky top-0 z-50 flex items-center justify-between px-4 md:px-20 py-4 bg-white/90 border-b border-gray-200 shadow-xl">
             <Link href="/" className="flex items-center min-w-[120px] h-10 cursor-pointer">
@@ -19,7 +24,7 @@ const Navbar: React.FC = () => {
                 <h2 className="ml-2 text-2xl font-semibold whitespace-nowrap">Matte Tool & Machine LTD.</h2>
             </Link>
             {/* Desktop Nav */}
-            <ul className="hidden md:flex gap-8 list-none m-0 p-0">
+            <ul className="hidden md:flex gap-8 list-none m-0 p-0 items-center">
                 {navLinks.map((link) => (
                     <li key={link.href} className="text-xl">
                         <Link
@@ -30,6 +35,22 @@ const Navbar: React.FC = () => {
                         </Link>
                     </li>
                 ))}
+                <li>
+                    <Dialog open={openModal} onOpenChange={setOpenModal}>
+                        <DialogTrigger asChild>
+                            <Button
+                                variant="default"
+                                className="ml-4"
+                                onClick={() => setOpenModal(true)}
+                            >
+                                Request a Quote
+                            </Button>
+                        </DialogTrigger>
+                        <DialogContent className="max-w-lg">
+                            <HomeCard />
+                        </DialogContent>
+                    </Dialog>
+                </li>
             </ul>
             {/* Mobile Hamburger */}
             <div className="md:hidden">
@@ -57,6 +78,22 @@ const Navbar: React.FC = () => {
                                         </Link>
                                     </li>
                                 ))}
+                                <li>
+                                    <Dialog open={openModal} onOpenChange={setOpenModal}>
+                                        <DialogTrigger asChild>
+                                            <Button
+                                                variant="default"
+                                                className="w-full mt-4"
+                                                onClick={() => setOpenModal(true)}
+                                            >
+                                                Request a Quote
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="max-w-lg">
+                                            <HomeCard />
+                                        </DialogContent>
+                                    </Dialog>
+                                </li>
                             </ul>
                         </div>
                     </SheetContent>
