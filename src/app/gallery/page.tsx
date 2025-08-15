@@ -35,58 +35,7 @@ const gallerySections = [
                 src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Camera_rbxrko.jpg",
             },
         ],
-    },
-    {
-        title: "Brass/Bronze",
-        media: [
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-        ],
-    },
-    {
-        title: "Castings",
-        media: [
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-        ],
-    },
-    {
-        title: "Coatings",
-        media: [
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-            {
-                type: "image",
-                src: "https://res.cloudinary.com/df1sxi2yf/image/upload/v1755180023/MTM-Website/Manifolds_l0y5pd.jpg",
-            },
-        ],
-    },
+    }
 ];
 
 export default function Gallery() {
