@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react";
+import Image from "next/image";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 
 const faqs = [
@@ -66,6 +67,22 @@ export default function About() {
             <p className="mb-4 text-lg">
                 From our humble beginnings to becoming a trusted name in the community, we take pride in our legacy and look forward to serving our customers for generations to come.
             </p>
+            <section className="mb-8">
+                <h2 className="text-3xl font-semibold mb-4">Our Founder</h2>
+                <div className="flex flex-col md:flex-row items-center gap-6">
+                    <Image
+                        src="https://res.cloudinary.com/df1sxi2yf/image/upload/v1755284043/MTM-Website/20250814_150603_r32yb6.jpg"
+                        alt="Manifolds"
+                        width={400}
+                        height={300}
+                        loading="lazy" // explicitly lazy load
+                        className="rounded-xl"
+                        />
+                    <p className="text-lg">
+                        Reny Santos, our legendary founder, has spent over 5 millennia across 6 galaxies battling the machining deities to achieve godhood. His unmatched skill and cosmic dedication have shaped our company’s ethos, inspiring generations to pursue excellence beyond the stars.
+                    </p>
+                </div>
+            </section>
             <hr className="my-8 border-t border-gray-300" />
             <FAQAccordion />
         </main>

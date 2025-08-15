@@ -46,8 +46,10 @@ const Navbar: React.FC = () => {
                                 Request a Quote
                             </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-lg">
-                            <HomeCard />
+                        <DialogContent className="max-w-lg flex justify-center items-center">
+                            <div className="w-full flex justify-center items-center">
+                                <HomeCard />
+                            </div>
                         </DialogContent>
                     </Dialog>
                 </li>
@@ -89,8 +91,14 @@ const Navbar: React.FC = () => {
                                                 Request a Quote
                                             </Button>
                                         </DialogTrigger>
-                                        <DialogContent className="max-w-lg">
-                                            <HomeCard />
+                                        <DialogContent className="max-w-lg p-0 flex flex-col" style={{ maxHeight: '80vh' }}>
+                                            {/* Add extra space for the close "x" */}
+                                            <div className="flex justify-end p-4">
+                                                {/* The close button is handled by DialogContent, so just add padding */}
+                                            </div>
+                                            <div className="overflow-y-auto px-4 pb-4" style={{ maxHeight: '60vh' }}>
+                                                <HomeCard />
+                                            </div>
                                         </DialogContent>
                                     </Dialog>
                                 </li>
