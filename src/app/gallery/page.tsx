@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { MediaFactory } from "../components/gallery/image_factory";
+import GalleryCarousel from "../components/gallery/galleryCarousel";
 
 const gallerySections = [
     {
@@ -65,10 +66,14 @@ export default function Gallery() {
                                         </div>
                                     ))}
                                 </div>
+                                {/* Cloudinary Folder Gallery Carousel */}
+                                
                             </CardContent>
                         </Card>
+                        
                     </section>
                 ))}
+                <GalleryCarousel/>
             </div>
         </main>
     );

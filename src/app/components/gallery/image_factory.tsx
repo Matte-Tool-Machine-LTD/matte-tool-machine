@@ -1,11 +1,13 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import Image from "next/image";
-import { cn } from "@/lib/utils"; // Shadcn utility for classnames
+import { cn } from "@/lib/utils";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 
 type MediaType = "image" | "video";
 
 interface MediaFactoryProps {
-    type: string; // Changed from MediaType to string to avoid type issues
+    type: string;
     src: string;
     alt?: string;
     className?: string;
@@ -17,16 +19,31 @@ export const MediaFactory: React.FC<MediaFactoryProps> = ({
     alt = "",
     className,
 }) => {
+    const [open, setOpen] = useState(false);
+
     if (type === "image") {
         return (
-            <Image
-                src={src}
-                alt={alt}
-                width={800}
-                height={600}
-                className={cn("rounded-lg shadow-md", className)}
-                priority
-            />
+            <Dialog open={open} onOpenChange={setOpen}>
+                <DialogTrigger asChild>
+                    <Image
+                        src={src}
+                        alt={alt}
+                        width={400}
+                        height={300}
+                        className={cn("rounded-lg shadow-md cursor-pointer transition-transform hover:scale-105", className)}
+                        onClick={() => setOpen(true)}
+                    />
+                </DialogTrigger>
+                <DialogContent className="flex justify-center items-center bg-white p-0">
+                    <Image
+                        src={src}
+                        alt={alt}
+                        width={1200}
+                        height={900}
+                        className="rounded-lg shadow-lg max-h-[80vh] w-auto object-contain"
+                    />
+                </DialogContent>
+            </Dialog>
         );
     }
 
