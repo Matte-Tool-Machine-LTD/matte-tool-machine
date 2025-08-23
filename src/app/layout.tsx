@@ -1,4 +1,6 @@
+
 import type { Metadata } from "next";
+
 import Navbar from "./components/navbar";
 import Footer from "./components/footer";
 import { Geist, Geist_Mono, Bebas_Neue } from "next/font/google";

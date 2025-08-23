@@ -3,13 +3,13 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 export default function Services() {
     return (
         <main className="max-w-4xl mx-auto py-10 px-4">
-            <h1 className="text-4xl font-extrabold mb-6 text-center text-primary">
+            <h1 className="text-4xl font-extrabold mb-6 text-center text-black">
                 Our Services
             </h1>
             <section className="mb-10">
                 <Card>
                     <CardHeader>
-                        <h2 className="text-2xl font-bold text-secondary">Capabilities</h2>
+                        <h2 className="text-2xl font-bold text-black">Capabilities</h2>
                     </CardHeader>
                     <CardContent>
                         <p className="mb-2">
@@ -29,7 +29,7 @@ export default function Services() {
             <section className="mb-10 grid md:grid-cols-2 gap-6">
                 <Card>
                     <CardHeader>
-                        <h2 className="text-xl font-bold text-secondary">Materials We Work With</h2>
+                        <h2 className="text-xl font-bold text-black">Materials We Work With</h2>
                     </CardHeader>
                     <CardContent>
                         <ul className="list-disc pl-6 space-y-1">
@@ -46,7 +46,7 @@ export default function Services() {
                 </Card>
                 <Card>
                     <CardHeader>
-                        <h2 className="text-xl font-bold text-secondary">Services Provided</h2>
+                        <h2 className="text-xl font-bold text-black">Services Provided</h2>
                     </CardHeader>
                     <CardContent>
                         <ul className="list-disc pl-6 space-y-1">
@@ -65,7 +65,7 @@ export default function Services() {
             <section className="mb-10">
                 <Card>
                     <CardHeader>
-                        <h2 className="text-xl font-bold text-secondary">Industries & Clients</h2>
+                        <h2 className="text-xl font-bold text-black">Industries & Clients</h2>
                     </CardHeader>
                     <CardContent>
                         <p className="mb-2">
@@ -79,9 +79,6 @@ export default function Services() {
                             <li>Local businesses & startups</li>
                             <li>Custom projects for inventors & engineers</li>
                         </ul>
-                        <p className="mt-2 text-muted-foreground">
-                            Some of our clients include: <span className="font-semibold">ABC Automotive, SkyTech Aerospace, MedPro Devices, and more.</span>
-                        </p>
                     </CardContent>
                 </Card>
             </section>
@@ -89,7 +86,7 @@ export default function Services() {
             <section>
                 <Card>
                     <CardHeader>
-                        <h2 className="text-xl font-bold text-secondary">Sample Work</h2>
+                        <h2 className="text-xl font-bold text-black">Sample Work</h2>
                     </CardHeader>
                     <CardContent>
                         <ul className="list-disc pl-6 space-y-1">
@@ -101,7 +98,7 @@ export default function Services() {
                             <li>Custom fixtures & tooling</li>
                         </ul>
                         <p className="mt-2 text-muted-foreground">
-                            <span className="font-semibold">Contact us</span> for a portfolio or to discuss your specific project needs!
+                            <a href="/contact" className="font-semibold underline hover:text-primary transition-colors">Contact us</a> for a portfolio or to discuss your specific project needs!
                         </p>
                     </CardContent>
                 </Card>
