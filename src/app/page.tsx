@@ -28,7 +28,7 @@ export default function Home() {
         {/* Left Side: Text and Placeholder for Image */}
         <section className="flex-1 max-w-xl md:mr-8 mb-8 md:mb-0">
           <h1 className="text-3xl md:text-5xl font-bold mb-4">
-        Vaughan's Premiere Machine Shop
+  Vaughan&apos;s Premiere Machine Shop
           </h1>
           <p className="text-base md:text-lg leading-relaxed">
         At Matte Tool and Machine, we have spent over 50 years perfecting the art of precision machining. Our state-of-the-art facility in Concord, Ontario is equipped with the latest technology to deliver high-quality components for a wide range of industries.

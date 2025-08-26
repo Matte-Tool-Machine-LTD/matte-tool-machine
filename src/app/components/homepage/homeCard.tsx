@@ -12,7 +12,7 @@ async function sendQuote(data: FormData) {
   return response.json();
 }
 
-const HomeCard: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+const HomeCard: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [submitting, setSubmitting] = useState(false);
   const [fileName, setFileName] = useState<string>("");

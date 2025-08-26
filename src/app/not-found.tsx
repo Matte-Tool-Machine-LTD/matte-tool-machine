@@ -11,7 +11,7 @@ export default function NotFound() {
                 </div>
                 <h1 className="text-4xl m-0">404</h1>
                 <p className="mt-4 text-center text-xl text-gray-700">
-                    Yikes we've hit a snag finding that page
+                        Yikes we&apos;ve hit a snag finding that page
                 </p>
             </div>
         </div>
