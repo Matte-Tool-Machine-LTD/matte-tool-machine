@@ -55,7 +55,7 @@ const HomeCard: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
       } else {
         alert("Failed to send quote request. Please try again.");
       }
-    } catch (error) {
+    } catch {
       alert("An error occurred. Please try again.");
     } finally {
       setSubmitting(false);

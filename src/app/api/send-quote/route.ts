@@ -39,6 +39,7 @@ export async function POST(req: NextRequest) {
   });
 
   // Prepare mail options with HTML formatting
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const mailOptions: any = {
     from: process.env.EMAIL_USER,
     to: RECEIVER_EMAIL,

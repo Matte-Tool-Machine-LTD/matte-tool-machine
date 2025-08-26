@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 
 // Replace with your Cloudinary folder and API key
@@ -32,7 +32,7 @@ export default function GalleryCarousel() {
                 const res = await fetch("/api/gallery");
                 const data = await res.json();
                 setMedia(data);
-            } catch (err) {
+            } catch {
                 setMedia([]);
             } finally {
                 setLoading(false);
@@ -161,9 +161,11 @@ export default function GalleryCarousel() {
                         onClick={() => setCurrentIdx(idx)}
                     >
                         {item.resource_type === "image" ? (
-                            <img
+                            <Image
                                 src={getMediaUrl(item)}
                                 alt=""
+                                width={64}
+                                height={64}
                                 className="h-16 w-16 object-cover rounded"
                             />
                         ) : (
