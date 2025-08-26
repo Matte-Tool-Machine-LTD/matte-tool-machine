@@ -6,6 +6,7 @@ import { Sheet, SheetTitle, SheetContent, SheetTrigger } from "@/components/ui/s
 import { Menu } from "lucide-react";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import HomeCard from "./homepage/homeCard";
+import { DialogTitle } from "@radix-ui/react-dialog";
 
 const Navbar: React.FC = () => {
     const [openModal, setOpenModal] = useState(false);
@@ -46,7 +47,8 @@ const Navbar: React.FC = () => {
                                 Request a Quote
                             </Button>
                         </DialogTrigger>
-                        <DialogContent className="max-w-lg flex justify-center items-center">
+                        <DialogContent className="max-w-lg flex flex-col items-center">
+                            <DialogTitle className="w-full text-2xl text-center mb-4">Request a Quote</DialogTitle>
                             <div className="w-full flex justify-center items-center">
                                 <HomeCard />
                             </div>
@@ -92,7 +94,7 @@ const Navbar: React.FC = () => {
                                             </Button>
                                         </DialogTrigger>
                                         <DialogContent className="max-w-lg p-0 flex flex-col" style={{ maxHeight: '80vh' }}>
-                                            {/* Add extra space for the close "x" */}
+                                            <DialogTitle className="px-4 py-2 border-b">Request a Quote</DialogTitle>
                                             <div className="flex justify-end p-4">
                                                 {/* The close button is handled by DialogContent, so just add padding */}
                                             </div>

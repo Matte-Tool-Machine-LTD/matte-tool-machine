@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 type MediaType = "image" | "video";
 
@@ -35,6 +35,7 @@ export const MediaFactory: React.FC<MediaFactoryProps> = ({
                     />
                 </DialogTrigger>
                 <DialogContent className="flex justify-center items-center bg-white p-0">
+                    <DialogTitle className="sr-only">{alt}</DialogTitle>
                     <Image
                         src={src}
                         alt={alt}

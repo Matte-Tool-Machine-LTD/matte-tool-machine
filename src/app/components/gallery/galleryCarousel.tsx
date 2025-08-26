@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
 
@@ -23,6 +23,7 @@ export default function GalleryCarousel() {
     const [currentIdx, setCurrentIdx] = useState(0);
     const [modalOpen, setModalOpen] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [hoverSide, setHoverSide] = useState<"left"|"right"|null>(null);
 
     useEffect(() => {
         async function fetchMedia() {
@@ -89,34 +90,62 @@ export default function GalleryCarousel() {
                         </div>
                     </DialogTrigger>
                     <DialogContent className="max-w-3xl flex flex-col items-center">
-                        <div className="flex justify-between w-full items-center mb-2">
-                            <Button variant="ghost" onClick={handlePrev} size="icon">
-                                <ChevronLeft />
-                            </Button>
-                            <Button variant="ghost" onClick={() => setModalOpen(false)} size="icon">
-                                <X />
-                            </Button>
-                            <Button variant="ghost" onClick={handleNext} size="icon">
-                                <ChevronRight />
-                            </Button>
-                        </div>
-                        <div className="flex justify-center w-full">
-                            {media[currentIdx].resource_type === "image" ? (
-                                <Image
-                                    src={getMediaUrl(media[currentIdx])}
-                                    alt={media[currentIdx].public_id}
-                                    width={800}
-                                    height={600}
-                                    className="max-h-[70vh] w-auto rounded shadow object-cover"
-                                    loading="lazy"
-                                />
-                            ) : (
-                                <video
-                                    src={getMediaUrl(media[currentIdx])}
-                                    controls
-                                    className="max-h-[70vh] w-auto rounded shadow"
-                                />
-                            )}
+                        <DialogTitle className="w-full text-center mb-2"></DialogTitle>
+                        <div className="relative flex justify-center items-center w-full" style={{ minHeight: "70vh" }}>
+                            {/* Left clickable area (outer 25%) */}
+                            <div
+                                className="absolute left-0 top-0 h-full" 
+                                style={{ width: "25%", cursor: "pointer", zIndex: 10 }}
+                                onClick={handlePrev}
+                                onMouseEnter={() => setHoverSide("left")}
+                                onMouseLeave={() => setHoverSide(null)}
+                            >
+                                {hoverSide === "left" && (
+                                    <div
+                                        className="h-full w-full"
+                                        style={{
+                                            background: "linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
+                                            transition: "background 0.3s"
+                                        }}
+                                    />
+                                )}
+                            </div>
+                            {/* Right clickable area (outer 25%) */}
+                            <div
+                                className="absolute right-0 top-0 h-full"
+                                style={{ width: "25%", cursor: "pointer", zIndex: 10 }}
+                                onClick={handleNext}
+                                onMouseEnter={() => setHoverSide("right")}
+                                onMouseLeave={() => setHoverSide(null)}
+                            >
+                                {hoverSide === "right" && (
+                                    <div
+                                        className="h-full w-full"
+                                        style={{
+                                            background: "linear-gradient(to left, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
+                                            transition: "background 0.3s"
+                                        }}
+                                    />
+                                )}
+                            </div>
+                            <div className="flex justify-center w-full">
+                                {media[currentIdx].resource_type === "image" ? (
+                                    <Image
+                                        src={getMediaUrl(media[currentIdx])}
+                                        alt={media[currentIdx].public_id}
+                                        width={800}
+                                        height={600}
+                                        className="max-h-[70vh] w-auto rounded shadow object-cover"
+                                        loading="lazy"
+                                    />
+                                ) : (
+                                    <video
+                                        src={getMediaUrl(media[currentIdx])}
+                                        controls
+                                        className="max-h-[70vh] w-auto rounded shadow"
+                                    />
+                                )}
+                            </div>
                         </div>
                     </DialogContent>
                 </Dialog>

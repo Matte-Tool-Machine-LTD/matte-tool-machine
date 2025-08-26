@@ -9,7 +9,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Delivery",
-        description: "Fast and reliable delivery to your doorstep."
+        description: "We work with Trans Ontario and our logistics partners to ensure your order arrives safely and in a timely manner"
     },
     {
         icon: (
@@ -19,7 +19,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Timeliness",
-        description: "We value your time and always deliver on schedule."
+        description: "We track your order each step of the way using our on in house software to ensure the status of your order is transparent and up to your standards"
     },
     {
         icon: (
@@ -29,7 +29,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Precision",
-        description: "Attention to detail ensures top quality results."
+        description: "We consistently ensure our tools are calibrated, whether we use a height gauge, surface tester or micrometer, we ensure that up to a standard of ±0.0001 inches"
     },
     {
         icon: (
@@ -40,7 +40,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Customer Service",
-        description: "Friendly support and clear communication every step of the way."
+        description: "Call us at any time, and we ensure that your concerns are addressed promptly, and we will work tirelessly to ensure your issue is resolved"
     },
     {
         icon: (
@@ -51,7 +51,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Competitive Quotes",
-        description: "Get fair, transparent pricing for every project."
+        description: "Get fair, transparent pricing for every project. Request a quote with us, and we will work with you to make sure we meet your needs"
     },
     {
         icon: (
@@ -61,7 +61,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Thorough Inspections",
-        description: "Rigorous checks guarantee your parts meet specifications."
+        description: "Following ISO:9001 protocols, we ensure that we test your parts each step of the way, and will only ship out quality work that we stand behind."
     }
 ];
 
@@ -71,7 +71,7 @@ const AboutUs: React.FC = () => (
             High Precision Machine Shop Focused on your needs
         </h2>
         <p className="max-w-2xl mx-auto mb-12 text-center text-gray-700 text-base md:text-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, urna eu tincidunt consectetur, nisi nisl aliquam enim, eget facilisis sapien sapien nec velit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+            At Matte Tool and Machine, we pride ourselves on delivering exceptional service and quality to our clients. Here are some of the key cornerstones that we abide by, to ensure that your experience with us is seamless and satisfactory.
         </p>
         <div className="flex justify-center gap-8 flex-wrap">
             <div className="flex flex-col items-center w-full">

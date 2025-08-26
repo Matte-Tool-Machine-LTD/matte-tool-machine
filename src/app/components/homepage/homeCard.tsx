@@ -5,14 +5,14 @@ import ReCAPTCHA from "react-google-recaptcha";
 const SITE_KEY = "6LdcCaUrAAAAAMoVryNXEaZxzMeZ9e-UECLDWrfq";
 
 async function sendQuote(data: FormData) {
-  const response = await fetch("/api/contact", {
+  const response = await fetch("/api/send-quote", {
     method: "POST",
     body: data,
   });
   return response.json();
 }
 
-const HomeCard: React.FC = () => {
+const HomeCard: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
   const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [submitting, setSubmitting] = useState(false);
   const [fileName, setFileName] = useState<string>("");
@@ -39,12 +39,12 @@ const HomeCard: React.FC = () => {
     setSubmitting(true);
 
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("email", email);
-    formData.append("phone", phone);
-    formData.append("details", details);
-    formData.append("g-recaptcha-response", token);
-    if (file) formData.append("file", file);
+  formData.append("name", name);
+  formData.append("email", email);
+  formData.append("phone", phone);
+  formData.append("details", details);
+  formData.append("recaptchaToken", token);
+  if (file) formData.append("image", file);
 
     try {
       const result = await sendQuote(formData);
@@ -65,8 +65,8 @@ const HomeCard: React.FC = () => {
   return (
     <aside style={{ flex: 1, maxWidth: 400, backgroundColor: '#f8f8f8e9' }} className="shadow-xl">
       <div className="rounded-xl shadow-lg p-4 flex flex-col gap-4">
-        <h2 className="text-xl font-semibold">Request a Quote</h2>
         <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
+          {children}
           <input type="text" name="name" placeholder="Name" className="w-full px-3 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
           <input type="email" name="email" placeholder="Email" className="w-full px-3 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
           <input type="tel" name="phone" placeholder="Phone" className="w-full px-3 py-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500" required />
