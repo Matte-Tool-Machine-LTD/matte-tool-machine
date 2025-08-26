@@ -1,9 +1,8 @@
 "use client"
 import React, { useState } from 'react';
-import Image from 'next/image';
 import { Dialog, DialogContent, DialogDescription, DialogClose } from '@/components/ui/dialog';
 import { DialogTitle } from '@radix-ui/react-dialog';
-// Removed unused import of title
+import { title } from 'process';
 
 const images = [
     {
@@ -48,11 +47,6 @@ export default function Gallery() {
                                 alt={img.alt}
                                 className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg transition-transform duration-200 group-hover:scale-105"
                             />
-                                <Image
-                                    src={img.src}
-                                    alt={img.alt}
-                                    className="w-full h-48 sm:h-56 md:h-64 object-cover rounded-lg transition-transform duration-200 group-hover:scale-105"
-                                />
                             <div className="absolute inset-0 flex items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 rounded-lg">
                                 <span className="text-white text-lg font-semibold px-3 py-1 bg-black/60 rounded">
                                     {img.title}
@@ -71,11 +65,6 @@ export default function Gallery() {
                         alt={images[selected].alt}
                         className="w-full max-h-[70vh] sm:max-h-[80vh] object-contain block bg-white"
                         />
-                            <Image
-                            src={images[selected].src}
-                            alt={images[selected].alt}
-                            className="w-full max-h-[70vh] sm:max-h-[80vh] object-contain block bg-white"
-                            />
                         <div className="absolute bottom-0 w-full bg-white/70 text-gray-900 px-4 py-3 backdrop-blur-sm">
                         <div className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-3">
                             <DialogTitle className="text-xl sm:text-xl m-0">
