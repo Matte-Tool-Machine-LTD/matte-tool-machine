@@ -10,6 +10,7 @@ import { DialogTitle } from "@radix-ui/react-dialog";
 
 const Navbar: React.FC = () => {
     const [openModal, setOpenModal] = useState(false);
+    const [sheetOpen, setSheetOpen] = useState(false);
 
     const navLinks = [
         { href: "/services", label: "Services" },
@@ -58,7 +59,7 @@ const Navbar: React.FC = () => {
             </ul>
             {/* Mobile Hamburger */}
             <div className="md:hidden">
-                <Sheet>
+                <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
                     <SheetTrigger asChild>
                         <Button variant="ghost" size="icon" aria-label="Open menu">
                             <Menu className="w-7 h-7" />
@@ -77,6 +78,7 @@ const Navbar: React.FC = () => {
                                         <Link
                                             href={link.href}
                                             className="block text-lg text-gray-800 transition-colors duration-200 hover:text-blue-500 hover:underline hover:underline-offset-4 hover:decoration-blue-500 hover:decoration-4"
+                                            onClick={() => setSheetOpen(false)}
                                         >
                                             {link.label}
                                         </Link>
