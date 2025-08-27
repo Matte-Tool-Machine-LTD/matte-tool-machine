@@ -79,7 +79,7 @@ export default function Contact() {
           <div>
             <iframe
                 title="Google Maps"
-                src="https://www.google.com/maps?q=111+Buttermill+Ave,+Concord,+ON,+Canada&output=embed&z=13"
+                src="https://www.google.com/maps?q=Matte+Tool+&+Machine+Ltd+111+Buttermill+Ave.,+Concord,+ON+L4K+3X5&output=embed&z=13"
                 width="400"
                 height="300"
                 style={{ border: 0, borderRadius: "8px" }}
