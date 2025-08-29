@@ -29,7 +29,7 @@ const aboutItems = [
             </svg>
         ),
         title: "Precision",
-        description: "We consistently ensure our tools are calibrated, whether we use a height gauge, surface tester or micrometer, we ensure that up to a standard of ±0.0001 inches"
+        description: "We consistently ensure our tools are calibrated, whether we use a height gauge, surface tester or micrometer, we ensure that up to a standard of ±0.0004 inches"
     },
     {
         icon: (

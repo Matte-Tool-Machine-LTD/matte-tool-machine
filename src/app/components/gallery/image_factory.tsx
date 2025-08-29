@@ -1,5 +1,5 @@
 "use client"
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -49,8 +49,15 @@ export const MediaFactory: React.FC<MediaFactoryProps> = ({
     }
 
     if (type === "video") {
+        const videoRef = useRef<HTMLVideoElement>(null);
+        useEffect(() => {
+            if (videoRef.current) {
+                videoRef.current.volume = 0.25;
+            }
+        }, [src]);
         return (
             <video
+                ref={videoRef}
                 src={src}
                 controls
                 className={cn("rounded-lg shadow-md", className)}
