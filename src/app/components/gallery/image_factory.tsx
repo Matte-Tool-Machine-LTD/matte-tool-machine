@@ -20,6 +20,12 @@ export const MediaFactory: React.FC<MediaFactoryProps> = ({
     className,
 }) => {
     const [open, setOpen] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    useEffect(() => {
+        if (type === "video" && videoRef.current) {
+            videoRef.current.volume = 0.25;
+        }
+    }, [type, src]);
 
     if (type === "image") {
         return (
@@ -49,12 +55,6 @@ export const MediaFactory: React.FC<MediaFactoryProps> = ({
     }
 
     if (type === "video") {
-        const videoRef = useRef<HTMLVideoElement>(null);
-        useEffect(() => {
-            if (videoRef.current) {
-                videoRef.current.volume = 0.25;
-            }
-        }, [src]);
         return (
             <video
                 ref={videoRef}
