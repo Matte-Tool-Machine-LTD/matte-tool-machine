@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 
 const PlanningIcon = () => (
     <svg className="text-blue-600 mb-2" width="40" height="40" viewBox="0 0 24 24" fill="none">
@@ -64,37 +65,45 @@ const processSteps = [
 export default function OurProcess() {
     return (
         <section className="py-8 bg-white relative">
-            <div
-                className="absolute inset-0 w-full h-full bg-cover bg-center opacity-90 z-0"
-                style={{ backgroundImage: "url('/grinding.JPG')" }}
-                aria-hidden="true"
-            />
+            {/* Use Next.js Image for optimized background */}
+            <div className="absolute inset-0 w-full h-full z-0">
+            <div className="w-full h-full absolute">
+                <Image
+                src="/grinding.JPG"
+                alt="Grinding background"
+                layout="fill"
+                objectFit="cover"
+                className="opacity-90"
+                priority
+                />
+            </div>
+            </div>
             <div className="relative z-10">
-                <h1 className="text-4xl font-bold mb-4 text-white justify-center text-center">
-                    A deep dive into our process
-                </h1>
-                <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-stretch max-w-5xl mx-auto p-8 bg-gray-50/80 rounded-lg shadow-sm">
-                    {processSteps.map((step) => (
-                        <div
-                            key={step.title}
-                            className="flex-1 min-w-[250px] p-5 mb-4 md:mb-0"
-                        >
-                            <div className="flex items-center gap-3 mb-4">
-                                {step.icon}
-                                <h3 className="border-b-2 border-blue-600 pb-2 text-lg md:text-xl font-semibold text-gray-800 m-0">
-                                    {step.title}
-                                </h3>
-                            </div>
-                            <ul className="space-y-2">
-                                <li>
-                                    <div className="mt-1 text-gray-700 text-sm md:text-base">
-                                        {step.description}
-                                    </div>
-                                </li>
-                            </ul>
+            <h1 className="text-4xl font-bold mb-4 text-white justify-center text-center">
+                A deep dive into our process
+            </h1>
+            <div className="flex flex-col md:flex-row gap-6 md:gap-8 justify-center items-stretch max-w-5xl mx-auto p-8 bg-gray-50/80 rounded-lg shadow-sm">
+                {processSteps.map((step) => (
+                <div
+                    key={step.title}
+                    className="flex-1 min-w-[250px] p-5 mb-4 md:mb-0"
+                >
+                    <div className="flex items-center gap-3 mb-4">
+                    {step.icon}
+                    <h3 className="border-b-2 border-blue-600 pb-2 text-lg md:text-xl font-semibold text-gray-800 m-0">
+                        {step.title}
+                    </h3>
+                    </div>
+                    <ul className="space-y-2">
+                    <li>
+                        <div className="mt-1 text-gray-700 text-sm md:text-base">
+                        {step.description}
                         </div>
-                    ))}
+                    </li>
+                    </ul>
                 </div>
+                ))}
+            </div>
             </div>
         </section>
     );

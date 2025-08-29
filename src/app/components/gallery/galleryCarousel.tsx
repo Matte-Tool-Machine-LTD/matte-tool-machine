@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
@@ -24,6 +26,15 @@ export default function GalleryCarousel() {
     const [modalOpen, setModalOpen] = useState(false);
     const [loading, setLoading] = useState(true);
     const [hoverSide, setHoverSide] = useState<"left"|"right"|null>(null);
+    const [sliderRef, slider] = useKeenSlider<HTMLDivElement>({
+        initial: currentIdx,
+        slideChanged(s) {
+            setCurrentIdx(s.track.details.rel);
+        },
+        mode: "free",
+        rubberband: true,
+        loop: true,
+    });
 
     useEffect(() => {
         async function fetchMedia() {
@@ -41,8 +52,8 @@ export default function GalleryCarousel() {
         fetchMedia();
     }, []);
 
-    const handlePrev = () => setCurrentIdx((idx) => (idx > 0 ? idx - 1 : media.length - 1));
-    const handleNext = () => setCurrentIdx((idx) => (idx < media.length - 1 ? idx + 1 : 0));
+    const handlePrev = () => slider.current?.prev();
+    const handleNext = () => slider.current?.next();
 
     if (loading) {
         return (
@@ -62,96 +73,80 @@ export default function GalleryCarousel() {
     return (
         <div className="w-full flex flex-col items-center">
             <div className="flex items-center gap-2">
-                <Button variant="ghost" onClick={handlePrev} size="icon">
-                    <ChevronLeft />
-                </Button>
+                {/* Hide arrows on mobile unless modal is open */}
+                {!modalOpen && (
+                    <div className="hidden sm:block">
+                        <Button variant="ghost" onClick={handlePrev} size="icon">
+                            <ChevronLeft />
+                        </Button>
+                    </div>
+                )}
                 <Dialog open={modalOpen} onOpenChange={setModalOpen}>
                     <DialogTrigger asChild>
-                        <div
-                            className="cursor-pointer"
-                            onClick={() => setModalOpen(true)}
-                        >
+                        <div className="cursor-pointer" onClick={() => setModalOpen(true)}>
                             {media[currentIdx].resource_type === "image" ? (
                                 <Image
                                     src={getMediaUrl(media[currentIdx])}
                                     alt={media[currentIdx].public_id}
                                     width={400}
-                                    height={256}
-                                    className="rounded shadow h-64 w-auto object-cover"
+                                    height={300}
+                                    className="rounded shadow h-64 w-auto object-cover cursor-pointer"
                                     loading="lazy"
                                 />
                             ) : (
                                 <video
                                     src={getMediaUrl(media[currentIdx])}
                                     controls
-                                    className="h-64 w-auto rounded shadow"
+                                    className="h-64 w-auto rounded shadow cursor-pointer"
                                 />
                             )}
                         </div>
                     </DialogTrigger>
-                    <DialogContent className="max-w-3xl flex flex-col items-center">
+                    <DialogContent className="w-full max-w-screen-2xl max-h-[90vh] flex flex-col items-center p-4">
                         <DialogTitle className="w-full text-center mb-2"></DialogTitle>
-                        <div className="relative flex justify-center items-center w-full" style={{ minHeight: "70vh" }}>
-                            {/* Left clickable area (outer 25%) */}
-                            <div
-                                className="absolute left-0 top-0 h-full" 
-                                style={{ width: "25%", cursor: "pointer", zIndex: 10 }}
-                                onClick={handlePrev}
-                                onMouseEnter={() => setHoverSide("left")}
-                                onMouseLeave={() => setHoverSide(null)}
-                            >
-                                {hoverSide === "left" && (
-                                    <div
-                                        className="h-full w-full"
-                                        style={{
-                                            background: "linear-gradient(to right, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
-                                            transition: "background 0.3s"
-                                        }}
-                                    />
-                                )}
+                        <div ref={sliderRef} className="keen-slider w-full h-full max-h-[70vh]">
+                            {media.map((item, idx) => (
+                                <div key={item.public_id} className="keen-slider__slide flex justify-center items-center">
+                                    {item.resource_type === "image" ? (
+                                        <Image
+                                            src={getMediaUrl(item)}
+                                            alt={item.public_id}
+                                            width={1600}
+                                            height={1200}
+                                            className="rounded-lg shadow-lg max-h-[70vh] max-w-[1800px] w-full object-contain"
+                                            loading="lazy"
+                                        />
+                                    ) : (
+                                        <video
+                                            src={getMediaUrl(item)}
+                                            controls
+                                            className="rounded-lg shadow-lg max-h-[70vh] max-w-[1800px] w-full object-contain"
+                                        />
+                                    )}
+                                </div>
+                            ))}
+                        </div>
+                        <div className="flex justify-between w-full mt-4">
+                            <div className="hidden sm:block">
+                                <Button variant="ghost" onClick={handlePrev} size="icon">
+                                    <ChevronLeft />
+                                </Button>
                             </div>
-                            {/* Right clickable area (outer 25%) */}
-                            <div
-                                className="absolute right-0 top-0 h-full"
-                                style={{ width: "25%", cursor: "pointer", zIndex: 10 }}
-                                onClick={handleNext}
-                                onMouseEnter={() => setHoverSide("right")}
-                                onMouseLeave={() => setHoverSide(null)}
-                            >
-                                {hoverSide === "right" && (
-                                    <div
-                                        className="h-full w-full"
-                                        style={{
-                                            background: "linear-gradient(to left, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 100%)",
-                                            transition: "background 0.3s"
-                                        }}
-                                    />
-                                )}
-                            </div>
-                            <div className="flex justify-center w-full">
-                                {media[currentIdx].resource_type === "image" ? (
-                                    <Image
-                                        src={getMediaUrl(media[currentIdx])}
-                                        alt={media[currentIdx].public_id}
-                                        width={800}
-                                        height={600}
-                                        className="max-h-[70vh] w-auto rounded shadow object-cover"
-                                        loading="lazy"
-                                    />
-                                ) : (
-                                    <video
-                                        src={getMediaUrl(media[currentIdx])}
-                                        controls
-                                        className="max-h-[70vh] w-auto rounded shadow"
-                                    />
-                                )}
+                            <div className="hidden sm:block">
+                                <Button variant="ghost" onClick={handleNext} size="icon">
+                                    <ChevronRight />
+                                </Button>
                             </div>
                         </div>
                     </DialogContent>
                 </Dialog>
-                <Button variant="ghost" onClick={handleNext} size="icon">
-                    <ChevronRight />
-                </Button>
+                {!modalOpen && (
+                    <div className="hidden sm:block">
+                        <Button variant="ghost" onClick={handleNext} size="icon">
+                            <ChevronRight />
+                        </Button>
+                    </div>
+                )}
             </div>
             <div className="flex gap-2 mt-4 flex-wrap justify-center">
                 {media.map((item, idx) => (
@@ -163,7 +158,7 @@ export default function GalleryCarousel() {
                         {item.resource_type === "image" ? (
                             <Image
                                 src={getMediaUrl(item)}
-                                alt=""
+                                alt={item.public_id}
                                 width={64}
                                 height={64}
                                 className="h-16 w-16 object-cover rounded"

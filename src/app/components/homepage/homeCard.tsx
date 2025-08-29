@@ -88,6 +88,8 @@ const HomeCard: React.FC<React.PropsWithChildren<object>> = ({ children }) => {
             />
             <label
               htmlFor="file-upload"
+              tabIndex={0}
+              style={{ pointerEvents: 'auto' }}
               className="inline-flex items-center px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm cursor-pointer hover:bg-gray-50 transition"
             >
               Choose File

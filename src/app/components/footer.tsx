@@ -7,7 +7,9 @@ const Footer: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex flex-row items-center justify-center">
                         <div className="flex flex-col">
-                            <Image src="/mtm_logo_full.png" alt="Matte Tool & Machine Logo" width={190} height={32} className="h-20 mr-2 ml-4 mb-4" />
+                            <div className="relative w-auto h-24">
+                                <Image src="/mtm_logo_full.png" alt="Matte Tool & Machine Logo" fill className="object-contain" />
+                            </div>
                             <p className="font-bold">Matte Tool & Machine LTD. {new Date().getFullYear()}</p>
                             <p>All rights reserved.</p>
                         </div>
